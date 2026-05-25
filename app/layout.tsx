@@ -15,17 +15,21 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Apore — AI-powered adaptive tutoring",
+  title: {
+    default: "apore.ai",
+    template: "%s | apore.ai",
+  },
   description:
     "Upload your materials, practice with Socratic guidance, and let Apore calibrate difficulty to productive struggle — not correctness alone.",
   openGraph: {
-    title: "Apore — AI-powered adaptive tutoring",
+    title: "apore.ai",
     description:
       "Socratic tutoring grounded in your content, calibrated to productive struggle.",
     type: "website",
   },
   icons: {
     icon: "/logo.png",
+    apple: "/logo.png",
   },
 };
 

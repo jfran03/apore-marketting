@@ -4,7 +4,7 @@ import { Manifesto } from "@/components/manifesto";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Manifesto — Apore",
+  title: "Manifesto",
   description:
     "Productive struggle is the signal. How Apore calibrates Socratic tutoring to the zone where learning actually happens.",
 };
