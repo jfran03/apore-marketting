@@ -222,7 +222,7 @@ export function RevealWords({
       <motion.span
         {...motionProps}
         variants={wordStagger(stagger, delay)}
-        className="inline-flex flex-wrap"
+        className="inline-flex flex-wrap max-md:w-full max-md:justify-center"
       >
         {words.map((word, index) => (
           <motion.span

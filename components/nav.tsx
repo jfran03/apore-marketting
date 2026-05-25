@@ -26,27 +26,50 @@ export function Nav({ variant = "dark" }: NavProps) {
   const reduceMotion = useReducedMotion();
   const isLight = variant === "light";
   const isHome = pathname === "/";
+  const isManifesto = pathname === "/manifesto";
   const [showWaitlistCta, setShowWaitlistCta] = useState(!isHome);
 
   useEffect(() => {
-    if (!isHome) {
-      setShowWaitlistCta(true);
-      return;
+    const headerOffset = "-64px 0px 0px 0px";
+
+    if (isHome) {
+      setShowWaitlistCta(false);
+
+      const hero = document.getElementById("hero");
+      if (!hero) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setShowWaitlistCta(
+            !entry.isIntersecting && entry.boundingClientRect.top < 0,
+          );
+        },
+        { threshold: 0, rootMargin: headerOffset },
+      );
+
+      observer.observe(hero);
+      return () => observer.disconnect();
     }
 
-    const hero = document.getElementById("hero");
-    if (!hero) return;
+    if (isManifesto) {
+      setShowWaitlistCta(true);
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowWaitlistCta(!entry.isIntersecting && entry.boundingClientRect.top < 0);
-      },
-      { threshold: 0, rootMargin: "-64px 0px 0px 0px" },
-    );
+      const waitlist = document.getElementById("waitlist");
+      if (!waitlist) return;
 
-    observer.observe(hero);
-    return () => observer.disconnect();
-  }, [isHome]);
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          setShowWaitlistCta(!entry.isIntersecting);
+        },
+        { threshold: 0, rootMargin: headerOffset },
+      );
+
+      observer.observe(waitlist);
+      return () => observer.disconnect();
+    }
+
+    setShowWaitlistCta(true);
+  }, [isHome, isManifesto]);
 
   const scrollToWaitlist = useCallback(() => {
     setOpen(false);
