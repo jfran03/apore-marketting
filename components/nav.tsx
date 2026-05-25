@@ -110,8 +110,10 @@ export function Nav({ variant = "dark" }: NavProps) {
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition hover:text-ink ${
-                isLight ? "text-body hover:text-ink" : "text-dark-muted hover:text-dark-ink"
+              className={`text-sm font-medium transition ${
+                isLight
+                  ? "text-body hover:text-ink"
+                  : "text-dark-muted hover:text-dark-ink"
               }`}
             >
               {link.label}

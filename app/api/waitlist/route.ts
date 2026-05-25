@@ -16,7 +16,7 @@ export async function POST(request: Request) {
   }
 
   const email = normalizeEmail(payload.email ?? "");
-  const source = payload.source === "footer" ? "footer" : "hero";
+  const source: "hero" | "footer" = payload.source === "footer" ? "footer" : "hero";
 
   if (!isValidEduEmail(email)) {
     return NextResponse.json(
@@ -43,14 +43,18 @@ export async function POST(request: Request) {
     headers["X-Waitlist-Secret"] = secret;
   }
 
+  const signup = {
+    email,
+    source,
+    timestamp: new Date().toISOString(),
+  };
+
   try {
     const response = await fetch(webhookUrl, {
       method: "POST",
       headers,
       body: JSON.stringify({
-        email,
-        source,
-        timestamp: new Date().toISOString(),
+        ...signup,
         secret: secret ?? undefined,
       }),
     });

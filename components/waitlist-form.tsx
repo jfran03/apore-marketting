@@ -119,7 +119,9 @@ export function WaitlistForm({
                   ) : (
                     <>
                       <span className="sm:hidden">Join →</span>
-                      <span className="hidden sm:inline">Join the waitlist →</span>
+                      <span className="hidden sm:inline">
+                        Join the waitlist →
+                      </span>
                     </>
                   )}
                 </button>
@@ -129,7 +131,9 @@ export function WaitlistForm({
               <motion.p
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={reduceMotion ? instantTransition : { duration: 0.25 }}
+                transition={
+                  reduceMotion ? instantTransition : { duration: 0.25 }
+                }
                 className="mt-2 text-sm text-error"
                 role="alert"
               >
