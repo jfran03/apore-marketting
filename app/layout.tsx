@@ -16,13 +16,13 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "apore.ai",
-    template: "%s | apore.ai",
+    default: "Apore",
+    template: "%s | Apore",
   },
   description:
     "Upload your materials, practice with Socratic guidance, and let Apore calibrate difficulty to productive struggle — not correctness alone.",
   openGraph: {
-    title: "apore.ai",
+    title: "Apore",
     description:
       "Socratic tutoring grounded in your content, calibrated to productive struggle.",
     type: "website",
