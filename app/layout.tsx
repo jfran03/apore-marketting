@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     description:
       "Socratic tutoring grounded in your content, calibrated to productive struggle.",
     type: "website",
+    images: [{ url: "/preview.png" }],
   },
   icons: {
     icon: "/logo.png",
